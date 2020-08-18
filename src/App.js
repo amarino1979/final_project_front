@@ -65,13 +65,13 @@ export default class App extends Component {
   }
 
   componentDidMount = async() => {
-    console.log(baseURL)
     const apiUrl = `${baseURL}markets/market`;
     await fetch(apiUrl)
       .then((response) => response.text())
       .then(async (data) => {
         await this.setState({apikey: '&apikey=' + data})
-      }) 
+      })
+      console.log(this.state)
   }
 
   handleSelectClick = (name, symbol) => {
