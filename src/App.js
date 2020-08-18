@@ -112,7 +112,7 @@ export default class App extends Component {
             </div>
         </form>
         {this.state.stocks.length > 0 &&
-        <StockInfo stock={this.state.stocks}/> 
+        <StockInfo stocks={this.state.stocks}/> 
         }
       </div>
     )
