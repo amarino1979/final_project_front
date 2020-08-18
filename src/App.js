@@ -6,7 +6,7 @@ import StockInfo from './components/StockInfo'
 
 let baseURL;
 if (process.env.NODE_ENV === 'development') {
-  baseURL = 'http://localhost: 3000'
+  baseURL = 'http://localhost:5000/'
 } else {
   baseURL = 'https://market-updates-api.herokuapp.com/'
 }

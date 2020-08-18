@@ -14,3 +14,8 @@ body {
 .search {
   width: 300px;
 }
+
+/* stockInfo component */
+.stock-attr {
+  color: whitesmoke;
+}
