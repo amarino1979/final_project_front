@@ -26,7 +26,6 @@ export default class App extends Component {
   }
 
   handleChange = async (event) => {
-    console.log(event.target.value)
     this.setState({currentValue: event.target.value})
     const keyword = 'keywords=' + event.target.value
     const symbolfunction = 'function=SYMBOL_SEARCH&'
@@ -42,7 +41,6 @@ export default class App extends Component {
       })
       this.setState({ symbolList: symList})
       
-    console.log(this.state)
   }
 
   handleSubmit = async (event) => {
@@ -64,10 +62,10 @@ export default class App extends Component {
         change: data['Global Quote']['09. change'],
         changePercent: data['Global Quote']['10. change percent'],
       }]}))
-      console.log(this.state)
   }
 
   componentDidMount = async() => {
+    console.log(baseURL)
     const apiUrl = 'http://localhost:5000/markets/market';
     await fetch(apiUrl)
       .then((response) => response.text())
