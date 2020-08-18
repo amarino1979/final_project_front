@@ -4,6 +4,14 @@ import './App.css'
 import SearchBar from './components/SearchBar'
 import StockInfo from './components/StockInfo'
 
+let baseURL;
+if (process.env.NODE_ENV === 'development') {
+  baseURL = 'http://localhost: 3000'
+} else {
+  baseURL = 'https://market-updates-api.herokuapp.com/'
+}
+console.log('current base URL:', baseURL)
+
 export default class App extends Component {
   constructor (props) {
     super(props) 
