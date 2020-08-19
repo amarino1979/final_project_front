@@ -19,6 +19,7 @@ export default class StockInfo extends Component {
                             latestTradingDay={stock.latestTradingDay}
                             previousClose={stock.previousClose}
                             change={stock.change}
+                            deleteStock={this.props.deleteStock}
                         />
                     })
                 }
