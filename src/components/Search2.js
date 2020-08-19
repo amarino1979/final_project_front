@@ -43,3 +43,38 @@ export default class Search2 extends Component {
       }
     }
     
+
+// carousel
+    // <div className="grid3">
+    //                 <div id="carouselCaptions" className="carousel slide" data-ride="carousel">
+    //                     <ol className="carousel-indicators">
+    //                         <li data-target="#carouselCaptions" data-slide-to="0" className="active"></li>
+    //                         <li data-target="#carouselCaptions" data-slide-to="1"></li>
+    //                         <li data-target="#carouselCaptions" data-slide-to="2"></li>
+    //                     </ol>
+    //                     <div className="carousel-inner">
+    //                         <div className="carousel-item active">
+    //                             <div className="icon1">
+    //                                 <img src={icon1} className="d-block w-100" alt="..."/>
+    //                             </div>
+    //                             <div className="carousel-caption d-none d-md-block">
+    //                                 <h5>First slide label</h5>
+    //                                 <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+    //                             </div>
+    //                         </div>
+    //                     </div>
+    //                     <div class="carousel-item">
+    //                         <img src="..." class="d-block w-100" alt="..."/>
+    //                         <div class="carousel-caption d-none d-md-block">
+    //                             <h5>Second slide label</h5>
+    //                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+    //                         </div>
+    //                     </div>
+    //                     <div class="carousel-item">
+    //                         <img src="..." class="d-block w-100" alt="..."/>
+    //                         <div class="carousel-caption d-none d-md-block">
+    //                             <h5>Third slide label</h5>
+    //                             <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+    //                         </div>
+    //                     </div>
+    //                     </div>

@@ -1,11 +1,23 @@
 import React, { Component } from 'react'
 
+
 export default class Home extends Component {
     render() {
         return (
-            <div>
-                Home page
-            </div>
+            <>
+                <div class="grid-container">
+                    <div className="grid1"></div>
+                    <div className="grid2">
+                    <div className="jumbotron">
+                        <h1 className="display-4">Welcome to Market Updates!</h1>
+                        <p className="lead">We have created a simple way to look up your favorite stocks and mutual funds for the day. </p>
+                        <hr className="my-4" />
+                        <p>What you will find is different about market updates is that so that you can get real-time quotes for several of them at the same time.</p>
+                        <a className="btn btn-info btn-lg" href="/search" role="button">Learn more</a>
+                    </div>
+                    </div>
+                </div>
+            </>
         )
     }
 }
