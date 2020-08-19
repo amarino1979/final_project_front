@@ -16,7 +16,7 @@ export default class StockCard extends Component {
                     <span>Previous Close: {this.props.previousClose}</span>
                     <span>Change: {this.props.change}</span>
                 </div>
-                <button 
+                <button className="btn"
                     onClick={() => this.props.deleteStock(this.props.symbol)}
                     type="submit"
                 >

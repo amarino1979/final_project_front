@@ -1,18 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap');
+
 body {
   background-image: url(./assets/stock.jpg);
   background-repeat: no-repeat;
   background-size: cover;
 }
 
+/* .button.btn {
+  transition-duration: 0.4s;
+  background-color: whitesmoke;
+}
+
+.button.btn:hover {
+  background-color: #4CAF50; /* Green */
+  /* color: white; */
+/* } */
+
+/* Navbar */
+a.navbar-brand {
+  font-family: 'Archivo Black', sans-serif;
+  font-size: 2rem;
+}
+
+div.icon {
+  margin: 0px 10px 6px 0px;
+}
+
+/* Search form */
 .search_form {
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: flex-start;
+    padding: 30px;
 }
 
 .search {
+  padding-right: inherit;
+}
+input.search-bar {
   width: 300px;
+  border-radius: 5px;
+  display: block;
 }
 
 /* stockInfo component */
@@ -36,4 +65,9 @@ body {
 .container {
   padding: 3px 16px;
   display: grid;
+}
+
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
 }

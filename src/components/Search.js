@@ -85,15 +85,14 @@ export default class Search extends Component {
         return (
           <div className="container">
             <form className="search_form">
-              <div>
-              <label htmlFor='keywords'>Ticker</label>
-              </div>
               <div className="search">
-                <input
+                <input className="search-bar"
                   placeholder={'Select stock..'}
                   value={this.state.currentValue}
                   onChange={this.handleChange}
+                  list='stocks'
                 />
+                
                 {tickerOptions.length > 0 &&
                   <select value={tickerOptions.name} size={tickerOptions.length}>
                     {
@@ -107,16 +106,18 @@ export default class Search extends Component {
                 }
               </div>
               <div>
-              <button onClick={this.handleSubmit}
+              <button className="bttn" onClick={this.handleSubmit}
                 type="submit"
                 >search</button>
                 </div>
             </form>
             {this.state.stocks.length > 0 &&
+            <div className="card-container">
             <StockInfo 
               stocks={this.state.stocks}
               deleteStock={this.deleteStock}
-            /> 
+            />
+            </div> 
             }
           </div>
         )
