@@ -28,10 +28,12 @@ export default class Portfolio extends Component {
             .then(async (data) => {
                 console.log(data)
                 let savedStocks = []
-                if(data.Note){
-                    alert("Whoa, not so fast!")
-                } else {
+                if(data.length > 0) {
                     data.forEach(stock => {
+                        if (stock.Note){
+                            alert('Your terminated')
+                            return
+                        }
                         const name = this.state.simpleData.find(x => {
                             if(x.symbol === stock['Global Quote']['01. symbol']){
                                 return x.name
@@ -39,9 +41,7 @@ export default class Portfolio extends Component {
                         })
                         savedStocks.push(buildStock(stock, name.name))
                     })
-                    // const stocks = buildStock(this.state.stocks, data, this.state.currentValue)
-                //   console.log(savedStocks)
-                  this.setState({stocks: savedStocks})
+                    this.setState({stocks: savedStocks})
                 }
             })
             //Make another call to alpha with symbols and get stocks

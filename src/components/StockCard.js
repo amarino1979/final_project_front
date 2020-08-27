@@ -18,16 +18,18 @@ export default class StockCard extends Component {
                 </div>
                 <div className="btn-container">
                 { this.props.savedStock && 
-                <button className="btn"
+                <button className="button-primary"
                     onClick={() => this.props.savedStock({name: this.props.name, symbol: this.props.symbol})}
-                    type="submit"
+                    type="submit" 
+                    value="submit input"
                 >
                     Save
                 </button>
                 }
-                <button className="btn"
+                <button className="button-primary"
                     onClick={() => this.props.deleteStock(this.props.symbol)}
                     type="submit"
+                    value="submit input"
                 >
                     Delete
                 </button>
