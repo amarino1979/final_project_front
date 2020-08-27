@@ -44,6 +44,16 @@ input.search-bar {
   display: block;
 }
 
+.bttn {
+  color: #fff;
+  background-color: #17a2b8;
+  border-color: #17a2b8;
+  padding: .5rem 1rem;
+  font-size: 1.25rem;
+  line-height: 0.5rem;
+  border-radius: 0.4rem;
+}
+
 /* stockInfo component */
 .stock-attr {
   color: whitesmoke;
@@ -70,8 +80,13 @@ input.search-bar {
 .card-container {
   display: flex;
   flex-wrap: wrap;
+  padding: 20px 20px 20px 20px;
 }
 
+.btn-container {
+  display: inline-block;
+  text-align: center;
+}
 /* Home Page Styling */
 
 .grid1 {

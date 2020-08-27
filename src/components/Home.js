@@ -13,6 +13,7 @@ export default class Home extends Component {
                         <p className="lead">We have created a simple way to look up your favorite stocks and mutual funds for the day. </p>
                         <hr className="my-4" />
                         <p>What you will find is different about market updates is that so that you can get real-time quotes for several of them at the same time.</p>
+                        <p>Make sure that you save your stocks so they will show up in the portfolio for later!</p>
                         <a className="btn btn-info btn-lg" href="/search" role="button">Learn more</a>
                     </div>
                     </div>

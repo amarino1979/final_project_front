@@ -1,20 +1,12 @@
 import React, { Component } from 'react'
-import Select from 'react-select'
 import StockInfo from './StockInfo'
+import {getBaseURL, alphaURL, globalFunction, symbolFunction, buildStock} from '../config/configs'
 
-let baseURL;
-if (process.env.NODE_ENV === 'development') {
-  baseURL = 'http://localhost:5000/'
-} else {
-  baseURL = 'https://market-updates-api.herokuapp.com/'
-}
 
 export default class Search extends Component {
     constructor (props) {
         super(props) 
         this.state = {
-          baseURL: 'https://www.alphavantage.co/query?',
-          function: 'function=GLOBAL_QUOTE&',
           apikey: '',
           currentValue: '',
           symbolList: [],
@@ -25,9 +17,9 @@ export default class Search extends Component {
       handleChange = async (event) => {
         this.setState({currentValue: event.target.value})
         const keyword = 'keywords=' + event.target.value
-        const symbolfunction = 'function=SYMBOL_SEARCH&'
+        // const symbolfunction = 'function=SYMBOL_SEARCH&'
         
-        const searchURL = this.state.baseURL + symbolfunction + keyword + this.state.apikey
+        const searchURL = alphaURL + symbolFunction + keyword + this.state.apikey
         const symList = []
         await fetch(searchURL)
           .then(response => response.json())
@@ -42,31 +34,29 @@ export default class Search extends Component {
       handleSubmit = async (event) => {
         event.preventDefault()
         const symbol = 'symbol=' + this.state.currentSymbol
-        const searchURL = this.state.baseURL + this.state.function + symbol + this.state.apikey
+        const searchURL = alphaURL + globalFunction + symbol + this.state.secondApiKey
         await fetch(searchURL)
           .then(response => response.json())
-          .then(data => this.setState({stocks: [...this.state.stocks, {
-            name: this.state.currentValue, 
-            symbol: data['Global Quote']['01. symbol'], 
-            open: data['Global Quote']['02. open'],
-            high: data['Global Quote']['03. high'],
-            low: data['Global Quote']['04. low'],
-            price: data['Global Quote']['05. price'],
-            volume: data['Global Quote']['06. volume'],
-            latestTradingDay: data['Global Quote']['07. latest trading day'],
-            previousClose: data['Global Quote']['08. previous close'],
-            change: data['Global Quote']['09. change'],
-            changePercent: data['Global Quote']['10. change percent'],
-          }]}))
+          .then(data => {
+            // console.log(data.Note)
+             if (data.Note) {
+               alert("Whoa, not so fast!")
+            } else {
+              const stocks = buildStock(data, this.state.currentValue)
+              // console.log(stocks)
+              this.setState({stocks:[...this.state.stocks, stocks]})
+            }})
+          // console.log(this.state)
           this.setState({currentValue: '' })
       }
     
       componentDidMount = async() => {
-        const apiUrl = `${baseURL}markets/market`;
+        const apiUrl = `${getBaseURL()}markets/market`;
         await fetch(apiUrl)
-          .then((response) => response.text())
+          .then((response) => response.json())
           .then(async (data) => {
-            await this.setState({apikey: '&apikey=' + data})
+            // console.log(data)
+            await this.setState({apikey: '&apikey=' + data.firstKey, secondApiKey: '&apikey=' + data.secondKey})
           })
       }
     
@@ -75,9 +65,31 @@ export default class Search extends Component {
       }
     
       deleteStock = (symbol) => {
-        console.log(this.state.stocks)
+        // console.log(this.state.stocks)
         const newStocks = this.state.stocks.filter(stock => stock.symbol !== symbol )
         this.setState({stocks: newStocks})
+      }
+
+      savedStock = (stock) => {
+        // console.log(stock)
+      // const postURL = "markets/newStock"
+      const savedURL = `${getBaseURL()}markets/newStock`
+       fetch(savedURL, {
+         method: 'POST',
+         json: true,
+         headers: new Headers({
+           'content-type': 'application/json'
+         }),
+         mode: 'cors',
+         body: JSON.stringify(stock)
+       })
+
+
+        .then((response) => {
+          // console.log(response.body)
+          return
+        })
+        
       }
 
       render() {
@@ -87,7 +99,7 @@ export default class Search extends Component {
             <form className="search_form">
               <div className="search">
                 <input className="search-bar"
-                  placeholder={'Select stock..'}
+                  placeholder={'Select a stock...'}
                   value={this.state.currentValue}
                   onChange={this.handleChange}
                   list='stocks'
@@ -116,6 +128,7 @@ export default class Search extends Component {
             <StockInfo 
               stocks={this.state.stocks}
               deleteStock={this.deleteStock}
+              savedStock={this.savedStock}
             />
             </div> 
             }

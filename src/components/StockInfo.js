@@ -3,7 +3,7 @@ import StockCard from './StockCard'
 
 export default class StockInfo extends Component {
     render() {
-        console.log(this.props)
+        // console.log(this.props)
         return (
             <Fragment>
                 {this.props.stocks.length > 0 &&
@@ -20,6 +20,7 @@ export default class StockInfo extends Component {
                             previousClose={stock.previousClose}
                             change={stock.change}
                             deleteStock={this.props.deleteStock}
+                            savedStock={this.props.savedStock}
                         />
                     })
                 }
