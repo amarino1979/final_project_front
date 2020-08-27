@@ -26,7 +26,7 @@ export default class Portfolio extends Component {
             await Promise.all(stockSymbol.map(symbol => fetch(alphaURL + globalFunction + 'symbol=' + symbol.symbol + this.state.apikey)))
             .then(responses => Promise.all(responses.map(response => response.json())))
             .then(async (data) => {
-                // console.log(data)
+                console.log(data)
                 let savedStocks = []
                 if(data.Note){
                     alert("Whoa, not so fast!")
@@ -34,7 +34,6 @@ export default class Portfolio extends Component {
                     data.forEach(stock => {
                         const name = this.state.simpleData.find(x => {
                             if(x.symbol === stock['Global Quote']['01. symbol']){
-                                alert("Slow API...Give me a second!")
                                 return x.name
                             }
                         })
