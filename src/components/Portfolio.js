@@ -19,7 +19,7 @@ export default class Portfolio extends Component {
             .then(async (data) => {
                 // console.log(data)
                 data[1].forEach(stock => stockSymbol.push({name: stock.name, symbol: stock.symbol, id: stock._id}))
-                await this.setState({apikey: '&apikey=' + data[0].firstKey, simpleData: stockSymbol})
+                await this.setState({apikey: '&apikey=' + data[0].firstKey, secondApiKey: '&apikey=' + data[0].secondKey, simpleData: stockSymbol})
                 //push symbols into 'stockSymbol' array
                 //set state for first key
             })
